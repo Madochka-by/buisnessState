@@ -1,0 +1,12 @@
+.head {
+  &-frame {
+    padding: 10vh 9vw;
+    display: grid;
+    grid-template-rows: auto auto;
+    background: linear-gradient(45deg, #262626 0%, rgba(38, 38, 38, 0) 53%);
+
+    p {
+      padding-right: 12vw;
+    }
+  }
+}

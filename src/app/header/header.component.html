@@ -1,0 +1,45 @@
+<header>
+  <div [style.display]="!closeModal ? 'flex' : 'none'" class="closable">
+    <p>✨Discover Your Dream Property with Estatein</p>
+    <a href="">Learn More</a>
+    <span (click)="closeModal = !closeModal">╳</span>
+  </div>
+  <div class="container">
+    <div class="container-logo">
+      <img src="/assets/img/logo.png" alt="" />
+      <p>Estatein</p>
+    </div>
+    <ul class="container-navigation">
+      <li routerLinkActive="currentNavigation">
+        <a [routerLink]="['/home']">Home</a>
+      </li>
+      <li routerLinkActive="currentNavigation">
+        <a [routerLink]="['/aboutUs']">About Us</a>
+      </li>
+      <li routerLinkActive="currentNavigation">
+        <a [routerLink]="['/properties']">Properties</a>
+      </li>
+      <li routerLinkActive="currentNavigation">
+        <a [routerLink]="['/services']">Services</a>
+      </li>
+      <li routerLinkActive="currentNavigation">
+        <a [routerLink]="['/contactUs']">Contact Us</a>
+      </li>
+    </ul>
+    <div
+      [style.background]="toggleThem == false ? 'black' : 'white'"
+      class="container-them"
+    >
+      <i
+        (click)="toggleThem = !toggleThem; _them.changeThem(toggleThem)"
+        [class]="toggleThem == false ? 'pi pi-moon' : 'pi pi-sun'"
+        [style.background]="toggleThem == false ? 'white' : 'black'"
+        [style.color]="toggleThem == false ? 'black' : 'white'"
+        [@swap]="toggleThem == false ? 'moon' : 'sun'"
+      ></i>
+    </div>
+  </div>
+</header>
+
+<!-- pi-moon -->
+<!-- pi-sun -->

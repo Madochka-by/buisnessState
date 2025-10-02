@@ -1,0 +1,114 @@
+@import "variables";
+
+header {
+  display: grid;
+  grid-template-rows: auto auto;
+
+  .closable {
+    background-image: url("/assets/img/BACKGROUND\ 2.png");
+    padding: 23px 0;
+    display: flex;
+    gap: 10px;
+    font-size: var(--font-text);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid $grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    a {
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        color: #ffffff80;
+      }
+
+      &:active {
+        color: #ffffff90;
+      }
+    }
+
+    span {
+      font-size: 12px;
+      position: absolute;
+      right: 20px;
+      background-color: #ffffff20;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: auto;
+
+      &:hover {
+        background-color: #ffffff60;
+      }
+
+      &:active {
+        background-color: #ffffff90;
+      }
+    }
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+    border-bottom: 1px solid $grey;
+    padding: var(--padding-frame);
+
+    &-logo {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    &-navigation {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+
+      li {
+        display: flex;
+        align-items: center;
+        height: 75%;
+        padding: 0 20px;
+        border-radius: 10px;
+        font-size: var(--font-text);
+      }
+    }
+
+    &-them {
+      width: 4vw;
+      height: 40px;
+      display: flex;
+      align-self: center;
+      justify-self: flex-end;
+      align-items: center;
+      border-radius: 30px;
+      border: 1px solid black;
+
+      i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        font-size: var(--font-text);
+        margin: 0 5px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        color: black;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.currentNavigation {
+  border: 1px solid #262626;
+  background: black;
+  color: white;
+}

@@ -1,0 +1,134 @@
+<div class="info">
+  <div class="info-main">
+    <img
+      class="info-main__subcont"
+      src="/assets/img/Sub Container.png"
+      alt=""
+    />
+    <div class="info-main-tittle">
+      <h1>
+        Discover Your Dream <br />
+        Property with Estatein
+      </h1>
+      <p class="text-lightGrey">
+        Your journey to finding the perfect property begins here. Explore our
+        listings to find the home that matches your dreams.
+      </p>
+      <div class="info-main-tittle-buttons">
+        <button class="info-main-tittle-buttons__first">Learn More</button>
+        <button class="info-main-tittle-buttons__second">
+          Browse Properties
+        </button>
+      </div>
+      <div class="info-main-tittle-containers">
+        <div class="info-main-tittle-containers-item">
+          <h2>200+</h2>
+          <p class="text-lightGrey">Happy Customers</p>
+        </div>
+        <div class="info-main-tittle-containers-item">
+          <h2>10k+</h2>
+          <p class="text-lightGrey">Properties For Clients</p>
+        </div>
+        <div class="info-main-tittle-containers-item">
+          <h2>16+</h2>
+          <p class="text-lightGrey">Years of Experience</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-main-image">
+      <img src="/assets/img/bulding.png" alt="" />
+    </div>
+  </div>
+  <div class="info-containers">
+    <div class="info-containers-item">
+      <img src="/assets/img/Icon Container1.png" alt="" />
+      <p>Find Your Dream Home</p>
+    </div>
+    <div class="info-containers-item">
+      <img src="/assets/img/Icon Container1.png" alt="" />
+      <p>Unlock Property Value</p>
+    </div>
+    <div class="info-containers-item">
+      <img src="/assets/img/Icon Container1.png" alt="" />
+      <p>Effortless Property Management</p>
+    </div>
+    <div class="info-containers-item">
+      <img src="/assets/img/Icon Container1.png" alt="" />
+      <p>Smart Investments, Informed Decisions</p>
+    </div>
+  </div>
+</div>
+<div class="properties">
+  <div class="properties-tittle tittle">
+    <h1 class="text-heading">Featured Properties</h1>
+    <p class="text-lightGrey">
+      Explore our handpicked selection of featured properties. Each listing
+      offers a glimpse into exceptional homes and investments available through
+      Estatein. Click "View Details" for more information.
+    </p>
+    <button>View All Properties</button>
+  </div>
+  <div class="properties-cards">
+    <!-- <div class="properties-cards-slider"> -->
+    <ng-container *ngFor="let i of countSlides">
+      <card-template></card-template>
+    </ng-container>
+    <!-- </div> -->
+  </div>
+
+  <app-standalone></app-standalone>
+</div>
+
+<div class="questions">
+  <div class="questions-tittle tittle">
+    <h1 class="text-heading">Frequently Asked Questions</h1>
+    <p class="text-lightGrey">
+      Find answers to common questions about Estatein's services, property
+      listings, and the real estate process. We're here to provide clarity and
+      assist you every step of the way.
+    </p>
+    <button>View All FAQ’s</button>
+  </div>
+  <div class="questions-info">
+    <div class="questions-info-item">
+      <h1 class="text-medium">How do I search for properties on Estatein?</h1>
+      <p class="text-lightGrey">
+        Learn how to use our user-friendly search tools to find properties that
+        match your criteria.
+      </p>
+      <button>Read More</button>
+    </div>
+    <div class="questions-info-item">
+      <h1 class="text-medium">How do I search for properties on Estatein?</h1>
+      <p class="text-lightGrey">
+        Learn how to use our user-friendly search tools to find properties that
+        match your criteria.
+      </p>
+      <button>Read More</button>
+    </div>
+    <div class="questions-info-item">
+      <h1 class="text-medium">How do I search for properties on Estatein?</h1>
+      <p class="text-lightGrey">
+        Learn how to use our user-friendly search tools to find properties that
+        match your criteria.
+      </p>
+      <button>Read More</button>
+    </div>
+  </div>
+  <app-standalone></app-standalone>
+</div>
+<div class="about">
+  <div class="about-left">
+    <h1 class="text-heading">Start Your Real Estate Journey Today</h1>
+    <p class="text-lightGrey">
+      Your dream property is just a click away. Whether you're looking for a new
+      home, a strategic investment, or expert real estate advice, Estatein is
+      here to assist you every step of the way. Take the first step towards your
+      real estate goals and explore our available properties or get in touch
+      with our team for personalized assistance.
+    </p>
+  </div>
+  <div class="about-right">
+    <button>Explore Properties</button>
+  </div>
+</div>

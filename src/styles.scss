@@ -1,1 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+.white-them {
+  background-color: var(--background-bright);
+  color: var(--color-bright);
+
+  .info {
+    background: white !important;
+  }
+
+  input {
+    color: black !important;
+  }
+
+  button {
+    color: black;
+  }
+}
+
+.dark-them {
+  background-color: var(--background-dark);
+  color: var(--color-dark);
+}
+
+@import "primeicons/primeicons.css";
+
+:root {
+  --padding-frame: 20px 9vw;
+  --font-text: 18px;
+  --font-heading: 3.5rem;
+
+  --background-bright: #ffffff;
+  --color-bright: #000000;
+
+  --background-dark: #141414;
+  --color-dark: #ffffff;
+}
+
+.text-lightGrey {
+  color: #999999;
+  font-size: 18px;
+  line-height: 150%;
+}
+.text-medium {
+  font-size: 24px;
+  line-height: 150%;
+}
+.text-heading {
+  font-size: 3.5rem;
+  line-height: 150%;
+}
+
+@media (max-width: 1440px) {
+  :root {
+    --padding-frame: 20px 5vw;
+    --font-text: 14px;
+  }
+  .text-lightGrey {
+    font-size: 16px;
+  }
+  .text-heading {
+    font-size: 38px;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: Urbanist;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  color: white;
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+}

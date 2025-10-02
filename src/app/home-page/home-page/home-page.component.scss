@@ -1,0 +1,215 @@
+@import "variables";
+@import "mixin";
+
+.tittle {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  grid-template-rows: auto auto;
+
+  h1 {
+    grid-row: 1/2;
+  }
+
+  p {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    width: 75%;
+  }
+
+  button {
+    grid-row: 2/3;
+    @include transparent-button;
+  }
+}
+
+.info {
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: $lightBlack;
+
+  &-main {
+    padding: 20px 0 20px 10vw;
+    position: relative;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+
+    &__subcont {
+      position: absolute;
+      left: 48%;
+      top: 15%;
+      width: 10%;
+    }
+
+    &-tittle {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-right: 25px;
+
+      h1 {
+        font-size: 4.5rem;
+        font-weight: 500;
+        line-height: 120%;
+      }
+
+      &-buttons {
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        &__first {
+          @include transparent-button;
+        }
+
+        &__second {
+          @include purple-button;
+        }
+      }
+
+      &-containers {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+
+        &-item {
+          @include transparent-frame;
+
+          h2 {
+            font-size: 40px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    &-image {
+      width: 100%;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &-containers {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background-color: $black;
+
+    &-item {
+      @include transparent-frame;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: url("/assets/img/Vector\ 431.svg");
+        top: 20px;
+        right: 20px;
+      }
+    }
+  }
+}
+.properties {
+  padding: var(--padding-frame);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &-cards {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 33%);
+  }
+}
+.questions {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-frame);
+  gap: 20px;
+
+  &-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+    &-item {
+      padding: 30px;
+      border: 1px solid $grey;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      button {
+        @include transparent-button;
+        align-self: flex-start;
+      }
+    }
+  }
+}
+.about {
+  margin-top: 50px;
+  padding: 10vh 5vw;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  background-image: url("/assets/img/Abstract\ Design\ Squares.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid $grey;
+
+  &-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+      @include purple-button;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .info {
+    h2 {
+      font-size: 30px;
+    }
+    &-main {
+      padding: 20px 0 20px 5vw;
+
+      &__subcont {
+        width: 9%;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .properties {
+    padding: var(--padding-frame);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-cards {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(2, auto);
+    }
+  }
+}
