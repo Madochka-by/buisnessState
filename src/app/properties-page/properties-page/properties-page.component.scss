@@ -1,12 +1,180 @@
+@import "mixin";
+
+::ng-deep #price .p-dropdown-item::after {
+  content: " $";
+}
+
+::ng-deep #size .p-dropdown-item::after {
+  content: " km²";
+}
+
+::ng-deep .p-dropdown {
+  background: $black;
+  border: 1px solid rgb(56, 55, 55);
+  border-radius: 7px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 10px;
+  width: 15vw;
+  font-size: 18px;
+  color: $lightGrey;
+
+  &-label {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+  }
+
+  &-trigger {
+    background-color: rgb(56, 55, 55, 10%);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    &-icon {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &-panel {
+    background: $black;
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid $grey;
+  }
+
+  &-item {
+    padding: 10px;
+
+    &:hover {
+      background-color: $lightBlack;
+    }
+  }
+}
+
+::ng-deep .p-dropdown-items-wrapper {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .head {
   &-frame {
-    padding: 10vh 9vw;
+    padding: 10vh 9vw 25vh 9vw;
     display: grid;
     grid-template-rows: auto auto;
-    background: linear-gradient(45deg, #262626 0%, rgba(38, 38, 38, 0) 53%);
+    background: linear-gradient(45deg, $lightBlack 0%, rgba(38, 38, 38, 0) 53%);
 
+    position: relative;
     p {
       padding-right: 12vw;
     }
+  }
+
+  &-filters {
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    // padding-top: 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-search {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: $lightBlack;
+      padding: 10px;
+
+      input {
+        background: $black;
+        width: 55vw;
+        padding: 3vh 15px;
+        border: 1px solid rgb(56, 55, 55);
+        border-radius: 15px 15px 0 0;
+      }
+
+      button {
+        @include purple-button;
+        padding: 10px 15px;
+        position: absolute;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+
+        &::before {
+          content: url("/assets/img/lepa.svg");
+        }
+      }
+    }
+
+    &-types {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      background: $lightBlack;
+    }
+
+    &-all {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+
+      &-text {
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        @include transparent-button;
+      }
+    }
+  }
+}
+
+.tittle {
+  padding: 20vh 9vw 3vh 9vw;
+
+  h1 {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: -60px;
+      left: -15px;
+      content: url("/assets/img/AbstractDesignStars.svg");
+    }
+  }
+}
+
+.products {
+  padding: var(--padding-frame);
+}
+
+//  &:hover {
+//     opacity: 0.7;
+//   }
+
+//   &:active {
+//     opacity: 0.9;
+//   }
+
+@media (max-width: 1440px) {
+  .tittle {
+    padding: 27vh 9vw 3vh 9vw;
   }
 }

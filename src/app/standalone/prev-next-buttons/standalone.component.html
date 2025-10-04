@@ -1,0 +1,23 @@
+<ng-container *ngIf="object">
+  <div class="slides">
+    <p class="text-lightGrey">
+      <span>{{ slide | zero }}</span> of {{ countSlides(object.length) | zero }}
+    </p>
+    <div class="slides-buttons">
+      <button
+        id="btn"
+        data-type="prev"
+        (click)="prevBtn.emit(); currentSlide($event)"
+      >
+        <i class="pi pi-arrow-left"></i>
+      </button>
+      <button
+        id="btn"
+        data-type="next"
+        (click)="nextBtn.emit(); currentSlide($event)"
+      >
+        <i class="pi pi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</ng-container>

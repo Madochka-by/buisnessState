@@ -1,0 +1,16 @@
+<p-carousel
+  #carousel
+  [value]="object"
+  [numVisible]="3"
+  [numScroll]="3"
+  [circular]="false"
+>
+  <ng-template let-card pTemplate="item">
+    <card-template [obejct]="card"></card-template>
+  </ng-template>
+</p-carousel>
+<app-standalone
+  (prev)="prevBtnCarusel()"
+  (next)="nextBtnCarusel()"
+  [object]="object"
+></app-standalone>

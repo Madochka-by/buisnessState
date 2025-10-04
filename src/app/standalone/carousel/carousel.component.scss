@@ -1,0 +1,6 @@
+::ng-deep .p-carousel {
+  &-prev,
+  &-next {
+    display: none;
+  }
+}

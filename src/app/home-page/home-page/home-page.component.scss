@@ -121,11 +121,8 @@
   flex-direction: column;
   gap: 20px;
 
-  &-cards {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(3, 33%);
-  }
+  // &-cards {
+  // }
 }
 .questions {
   display: flex;

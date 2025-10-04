@@ -20,6 +20,10 @@
 .dark-them {
   background-color: var(--background-dark);
   color: var(--color-dark);
+
+  input {
+    color: white !important;
+  }
 }
 
 @import "primeicons/primeicons.css";

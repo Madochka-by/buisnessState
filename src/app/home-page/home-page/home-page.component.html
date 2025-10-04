@@ -69,11 +69,7 @@
     <button>View All Properties</button>
   </div>
   <div class="properties-cards">
-    <!-- <div class="properties-cards-slider"> -->
-    <ng-container *ngFor="let i of countSlides">
-      <card-template></card-template>
-    </ng-container>
-    <!-- </div> -->
+    <app-carousel [object]="cardsData"></app-carousel>
   </div>
 
   <app-standalone></app-standalone>

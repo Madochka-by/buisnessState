@@ -1,0 +1,25 @@
+<div class="frame">
+  <img [src]="obejct?.image" alt="" />
+  <h1 class="frame__tittle text-medium">{{ obejct?.name }}</h1>
+  <p class="frame__descripe text-lightGrey">
+    {{ obejct?.descriptionPreview }} <a href="">Read More</a>
+  </p>
+  <div class="frame-info">
+    <button>
+      <i class="pi pi-bed"></i>
+      <p>{{ obejct?.houseBedroom }}-Bedroom</p>
+    </button>
+    <button>
+      <i class="pi pi-bath"></i><P>{{ obejct?.houseBathroom }}-Bathroom</P>
+    </button>
+    <button>
+      <i class="pi pi-house"></i>
+      <p>{{ obejct?.houseType }}</p>
+    </button>
+  </div>
+  <div class="frame-details">
+    <p class="text-lightGrey">price</p>
+    <h1 class="text-medium">${{ obejct?.price | number }}</h1>
+    <button>View Property Details</button>
+  </div>
+</div>
