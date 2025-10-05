@@ -3,4 +3,8 @@
   &-next {
     display: none;
   }
+  &-item {
+    display: flex;
+    justify-content: center;
+  }
 }
