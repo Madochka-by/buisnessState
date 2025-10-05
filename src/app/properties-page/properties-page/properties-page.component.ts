@@ -1,4 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { cards, GetDataService } from 'src/app/get-data-DB/get-data.service';
 import { FilterService } from '../service/filter.service';
@@ -9,15 +17,21 @@ export interface filter {
   selectedPrice: string | undefined;
   selectedSize: string | undefined;
   selectedYear: string | undefined;
+  inputValue: string | undefined;
 }
 
 @Component({
   selector: 'app-properties-page',
   templateUrl: './properties-page.component.html',
   styleUrls: ['./properties-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertiesPageComponent implements OnInit, OnDestroy {
-  constructor(private _db: GetDataService, private _filter: FilterService) {}
+  constructor(
+    private _db: GetDataService,
+    private _filter: FilterService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   public cities?: string[] | number[];
   public types?: string[] | number[];
@@ -26,13 +40,17 @@ export class PropertiesPageComponent implements OnInit, OnDestroy {
   public years?: string[] | number[];
 
   public filters: filter = {
-    selectedLocation: '',
-    selectedType: '',
-    selectedPrice: '',
-    selectedSize: '',
-    selectedYear: '',
+    selectedLocation: undefined,
+    selectedType: undefined,
+    selectedPrice: undefined,
+    selectedSize: undefined,
+    selectedYear: undefined,
+    inputValue: undefined,
   };
+  public checkFiltersData!: string[];
+
   public proveFilt: boolean = false;
+  public inputValue?: string;
 
   public cardsData!: cards[];
   public currentCardsData!: cards[];
@@ -51,19 +69,21 @@ export class PropertiesPageComponent implements OnInit, OnDestroy {
 
         this.cardsData = res;
         this.currentCardsData = res;
+
+        this.cdr.markForCheck();
       });
   }
 
-  public resetFilters(): void {
-    this.filters = {
-      selectedLocation: undefined,
-      selectedType: undefined,
-      selectedPrice: undefined,
-      selectedSize: undefined,
-      selectedYear: undefined,
-    };
-    this.proveFilt = false;
-    this.currentCardsData = this.cardsData;
+  public checkFilters(): void {
+    this.checkFiltersData = [];
+    Object.values(this.filters).forEach((el: any) => {
+      if (el != undefined) {
+        this.checkFiltersData.push(el);
+      }
+    });
+    if (this.checkFiltersData.length == 0) {
+      this.proveFilt = false;
+    }
   }
 
   public updateFilters(): void {
@@ -93,17 +113,43 @@ export class PropertiesPageComponent implements OnInit, OnDestroy {
         (card: cards) => +card.buildYear <= _year
       );
     }
+    if (this.filters.inputValue) {
+      const _input: string = this.filters.inputValue
+        ?.toString()
+        .trim()
+        .toLowerCase();
+      filtered = this.cardsData.filter((card: cards) =>
+        card.name.toLowerCase().includes(_input)
+      );
+    }
 
     this.currentCardsData = filtered;
   }
 
+  @ViewChild('valueHref') input!: ElementRef<HTMLInputElement>;
+
   public deleteFilter(key: keyof filter): void {
+    key === 'inputValue' ? (this.input.nativeElement.value = '') : '';
     this.filters[key] = undefined;
     this.updateFilters();
   }
 
+  public resetFilters(): void {
+    this.filters = {
+      selectedLocation: undefined,
+      selectedType: undefined,
+      selectedPrice: undefined,
+      selectedSize: undefined,
+      selectedYear: undefined,
+      inputValue: undefined,
+    };
+    this.input.nativeElement.value = '';
+    this.proveFilt = false;
+    this.currentCardsData = this.cardsData;
+  }
+
   public ngOnDestroy(): void {
-    this.$subDestroy.next();
     this.$subDestroy.complete();
+    this.$subDestroy.next();
   }
 }

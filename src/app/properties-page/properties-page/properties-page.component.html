@@ -14,8 +14,18 @@
         class="text-lightGrey"
         type="text"
         placeholder="Search For A Property"
+        #valueHref
       />
-      <button id="Search">Find Property</button>
+      <button
+        (click)="
+          filters.inputValue = valueHref.value;
+          proveFilt = true;
+          updateFilters()
+        "
+        id="Search"
+      >
+        Find Property
+      </button>
     </div>
     <div class="head-filters-types">
       <p-dropdown
@@ -67,7 +77,7 @@
     >
       <ul class="head-filters-all-text">
         <li
-          (click)="deleteFilter(filter.key)"
+          (click)="deleteFilter(filter.key); checkFilters()"
           *ngFor="let filter of filters! | keyvalue"
         >
           {{ filter.value }}
