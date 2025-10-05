@@ -35,6 +35,7 @@ export class PropertiesPageComponent implements OnInit, OnDestroy {
   public proveFilt: boolean = false;
 
   public cardsData!: cards[];
+  public currentCardsData!: cards[];
   private $subDestroy = new Subject<void>();
 
   public ngOnInit(): void {
@@ -49,6 +50,7 @@ export class PropertiesPageComponent implements OnInit, OnDestroy {
         this.years = this._filter.outputFilters(res, 'build_years');
 
         this.cardsData = res;
+        this.currentCardsData = res;
       });
   }
 
@@ -61,6 +63,43 @@ export class PropertiesPageComponent implements OnInit, OnDestroy {
       selectedYear: undefined,
     };
     this.proveFilt = false;
+    this.currentCardsData = this.cardsData;
+  }
+
+  public updateFilters(): void {
+    let filtered: cards[] = this.cardsData;
+
+    if (this.filters.selectedLocation) {
+      filtered = this.cardsData.filter(
+        (card: cards) => card.location == this.filters.selectedLocation
+      );
+    }
+    if (this.filters.selectedType) {
+      filtered = this.cardsData.filter(
+        (card: cards) => card.houseType == this.filters.selectedType
+      );
+    }
+    if (this.filters.selectedPrice) {
+      const _price: number = +this.filters.selectedPrice;
+      filtered = this.cardsData.filter((card: cards) => card.price <= _price);
+    }
+    if (this.filters.selectedSize) {
+      const _size: number = +this.filters.selectedSize;
+      filtered = this.cardsData.filter((card: cards) => card.area <= _size);
+    }
+    if (this.filters.selectedYear) {
+      const _year: number = +this.filters.selectedYear;
+      filtered = this.cardsData.filter(
+        (card: cards) => +card.buildYear <= _year
+      );
+    }
+
+    this.currentCardsData = filtered;
+  }
+
+  public deleteFilter(key: keyof filter): void {
+    this.filters[key] = undefined;
+    this.updateFilters();
   }
 
   public ngOnDestroy(): void {

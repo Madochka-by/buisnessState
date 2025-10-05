@@ -23,7 +23,7 @@
         [(ngModel)]="filters.selectedLocation"
         [showClear]="false"
         placeholder="Location"
-        (onChange)="proveFilt = true"
+        (onChange)="proveFilt = true; updateFilters()"
       >
       </p-dropdown>
       <p-dropdown
@@ -31,7 +31,7 @@
         [(ngModel)]="filters.selectedType"
         [showClear]="false"
         placeholder="Property Type"
-        (onChange)="proveFilt = true"
+        (onChange)="proveFilt = true; updateFilters()"
       >
       </p-dropdown>
       <p-dropdown
@@ -39,7 +39,7 @@
         [(ngModel)]="filters.selectedPrice"
         [showClear]="false"
         placeholder="Pricing Range"
-        (onChange)="proveFilt = true"
+        (onChange)="proveFilt = true; updateFilters()"
         id="price"
       >
       </p-dropdown>
@@ -48,7 +48,7 @@
         [(ngModel)]="filters.selectedSize"
         [showClear]="false"
         placeholder="Property size"
-        (onChange)="proveFilt = true"
+        (onChange)="proveFilt = true; updateFilters()"
         id="size"
       >
       </p-dropdown>
@@ -57,7 +57,7 @@
         [(ngModel)]="filters.selectedYear"
         [showClear]="false"
         placeholder="Build Year"
-        (onChange)="proveFilt = true"
+        (onChange)="proveFilt = true; updateFilters()"
       >
       </p-dropdown>
     </div>
@@ -65,9 +65,14 @@
       [style.opacity]="proveFilt ? 1 : 0"
       class="head-filters-all text-lightGrey"
     >
-      <div class="head-filters-all-text">
-        <p *ngFor="let filter of filters! | keyvalue">{{ filter.value }}</p>
-      </div>
+      <ul class="head-filters-all-text">
+        <li
+          (click)="deleteFilter(filter.key)"
+          *ngFor="let filter of filters! | keyvalue"
+        >
+          {{ filter.value }}
+        </li>
+      </ul>
       <button (click)="resetFilters()">Reset Filters</button>
     </div>
   </div>
@@ -81,5 +86,5 @@
   </p>
 </div>
 <div class="products">
-  <app-carousel [object]="cardsData"></app-carousel>
+  <app-carousel [object]="currentCardsData"></app-carousel>
 </div>

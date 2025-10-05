@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { cards } from 'src/app/get-data-DB/get-data.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FilterService {
   private output: string[] | number[] = [];
 
